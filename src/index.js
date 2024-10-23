@@ -20,7 +20,7 @@ function generateWords(event) {
   let poemElement = document.querySelector("#word");
   poemElement.classList.remove("hidden");
   poemElement.innerHTML = `<div id="blink">
-      ⏳Genearate about ${instructionElement.value}
+      ⏳Generate about ${instructionElement.value}
     </div>`;
 
   axios.get(apiUrl).then(displayAnswer);

@@ -1,17 +1,28 @@
-function generatePoem(event) {
-  event.preventDefault();
-
+function displayPoem(response) {
+  console.log("poem generatated");
   new Typewriter("#poem", {
-    strings: [
-      "You Are the Penultimate Love of My Life.",
-      "The garden you plant and I plan is tunneled through by voles the vowels. ",
-      "we speak aren't vows but there's something holding me here, for now, ",
-      " like your eyes, which I suppose are brown, after all.",
-    ],
+    strings: response.data.answer,
     autoStart: true,
     delay: 10,
     cursor: "",
   });
+}
+
+function generatePoem(event) {
+  event.preventDefault();
+
+  let instructionElement = document.querySelector("#user-instructions");
+  let apiKey = "3146t1140fd0d5bb8o78d46fad42f7bd";
+  let context =
+    "Generate a love poem letter of 10 lines,please be precise and seperate each line with a <br/>";
+  let prompt = `Generate an english poem about ${instructionElement.value}`;
+  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  console.log("Generate poem");
+  console.log(`Prompt:${prompt}`);
+  console.log(`Context:${context}`);
+
+  axios.get(apiUrl).then(displayPoem);
 }
 
 let formElement = document.querySelector("#form");

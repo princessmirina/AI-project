@@ -1,5 +1,5 @@
-function displayPoem(response) {
-  new Typewriter("#poem", {
+function displayAnswer(response) {
+  new Typewriter("#word", {
     strings: response.data.answer,
     autoStart: true,
     delay: 10,
@@ -7,24 +7,24 @@ function displayPoem(response) {
   });
 }
 
-function generatePoem(event) {
+function generateWords(event) {
   event.preventDefault();
 
   let instructionElement = document.querySelector("#user-instructions");
   let apiKey = "3146t1140fd0d5bb8o78d46fad42f7bd";
   let context =
-    "Generate a love poem letter of 10 lines,please be precise and seperate each line with a <br/>";
-  let prompt = `Generate an english poem about ${instructionElement.value}`;
+    "Please generate content based on the user's instruction. Be precise and return the answer accordingly and seperate each line with <br/>.";
+  let prompt = instructionElement.value;
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-  let poemElement = document.querySelector("#poem");
+  let poemElement = document.querySelector("#word");
   poemElement.classList.remove("hidden");
   poemElement.innerHTML = `<div id="blink">
-      ⏳Genearate an english Poem about ${instructionElement.value}
+      ⏳Genearate about ${instructionElement.value}
     </div>`;
 
-  axios.get(apiUrl).then(displayPoem);
+  axios.get(apiUrl).then(displayAnswer);
 }
 
 let formElement = document.querySelector("#form");
-formElement.addEventListener("submit", generatePoem);
+formElement.addEventListener("submit", generateWords);

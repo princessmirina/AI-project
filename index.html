@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/index.css" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>AI project</title>
   </head>
   <body>
     <div class="container">
       <h1>AI Generator</h1>
-      <form>
+      <form id="form">
         <input
           type="search"
           placeholder="Enter a text"
@@ -21,13 +22,7 @@
         <input type="submit" class="submit-input" />
       </form>
 
-      <div class="poem">
-        Why am i doing this? Failure <br />
-        To keep my work in order so as to be able to find things <br />
-        To paint the house <br />
-        To earn enough money to live on <br />
-        To reorganize the house so as to be able to paint the house
-      </div>
+      <div class="poem" id="poem"></div>
       <footer>
         This AI project was coded by
         <a href="https://github.com/princessmirina">Mariam</a> and is
